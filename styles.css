@@ -94,12 +94,16 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.card-body-item input{
-    margin-right: 10px;
-}
 .card-body-checkbox {
-	display: flex;
-    padding-top: 8px;
+	z-index: 5;
+	width: 17px;
+	height: 15px;
+	margin-top: 15px;
+	margin-left: 10px;
+	background: white;
+	border-radius: 3px;
+	position: relative;
+	border: gray solid 2px;
 }
 .card-body-title{
 	margin-top: 10px;
@@ -130,6 +134,8 @@ header {
 	font-family: 'Roboto', sans-serif;
 	font-size: 20px;
 	line-height: 29px;
+	border: none;
+	background-color: inherit;
 }
 .add {
     width: 60px;
