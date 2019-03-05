@@ -74,6 +74,18 @@ header {
 	line-height: 29px;
 	font-family: 'Roboto', sans-serif;
 }
+.card-header-title input{
+	height: 29px;
+	width: 500px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	line-height: 29px;
+	font-weight: bold;
+	border: none;
+	color: black;
+	opacity: 0.9;
+	background-color: white;}
+
 .card-header-icon img {
 	padding-top: 15px;
 	padding-right: 15px;
@@ -95,20 +107,16 @@ header {
     padding-bottom: 10px;
 }
 .card-body-checkbox {
-	z-index: 5;
-	width: 17px;
-	height: 15px;
-	margin-top: 15px;
-	margin-left: 10px;
-	background: white;
-	border-radius: 3px;
-	position: relative;
-	border: gray solid 2px;
+	margin-top: 20px;
+	height: 20px;
+	width: 20px;
+	border: 2px solid #7F7F7F;
+	border-radius: 6px;
 }
 .card-body-title{
-	margin-top: 10px;
+	margin-top: 20px;
 	margin-left: 10px;
-	height: 29px;
+	height: 20px;
 	width: 100%;
 	opacity: 0.5;
 	color: #000000;
@@ -126,9 +134,9 @@ header {
 	width: 500px;
 	background-color: #FFFFFF;
 }
-.class-footer input {
+input{
 	height: 29px;
-	width: 92px;
+	width: 500px;
 	opacity: 0.5;
 	color: #000000;
 	font-family: 'Roboto', sans-serif;
