@@ -75,8 +75,6 @@ function CountMatrixDiagonal(matrix){
     var sumReverse=0;
     for (var i = 0; i < matrix.length; i++){
         sumMain += matrix[i][i];
-    }
-    for (var i = 0; i < matrix.length; i++) {
         sumReverse += matrix[i][matrix.length - 1 - i];
     }
     console.log(sumMain-sumReverse);
