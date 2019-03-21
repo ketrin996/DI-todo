@@ -1,3 +1,7 @@
+let container = document.createElement('div');
+container.className = 'cards-container';
+container.id = 'container';
+
 let createBoard = function (board) {
     let boardContainer = document.createElement('div');
     boardContainer.className = 'card-item';
@@ -10,14 +14,20 @@ let createBoard = function (board) {
 
     let inputTitle = document.createElement("INPUT");
     inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute("value", dashboars[0].title);
+    inputTitle.setAttribute('placeholder', dashboars[0].title);
     inputTitle.className ='card-header-title-input';
 
     let headerIconDiv = document.createElement('div');
     headerIconDiv.className = 'card-header-icon' ;
 
-    let headerIcon = document.createElement('img');
+    let headerIcon = document.createElement('input');
+    headerIcon.setAttribute("type", "image");
     headerIcon.src = "./images/delete.svg";
+    headerIcon.className = 'card-header-icon-img';
+    headerIcon.addEventListener('click', function (e) {
+        boardContainer.remove();
+        deleteDashboardData(board.id)
+    });
 
     let boardBody = document.createElement('div');
     boardBody.className = 'card-body';
@@ -27,27 +37,20 @@ let createBoard = function (board) {
 
     let inputTodo = document.createElement('input');
     inputTodo.setAttribute("type", "text");
-    inputTodo.setAttribute("value", "Add to do");
+    inputTodo.setAttribute('placeholder', "Add to do");
     inputTodo.className ='input-todos';
 
-    let delBtn = document.createElement('button');
-    delBtn.innerText = 'Delete';
-    delBtn.addEventListener('click', function (e) {
-        boardContainer.remove();
-        deleteDashboardData(board.id)
-    });
 
     headerIconDiv.appendChild(headerIcon);
     boardHeaderTitle.appendChild(inputTitle);
     boardHeader.appendChild(boardHeaderTitle);
     boardHeader.appendChild(headerIconDiv);
 
-
     boardContainer.appendChild(boardHeader);
     boardContainer.appendChild(boardBody);
-    footer.appendChild(inputTodo);
-    footer.appendChild(delBtn);
     boardContainer.appendChild(footer);
+    footer.appendChild(inputTodo);
+
 
     let renderAllTasks = function (boardBody, tasks) {
         tasks.map(createTask).forEach(function (tsk) {
@@ -64,18 +67,13 @@ let createBoard = function (board) {
         addTask(task);
     };
 
-    let addTaskBtn = document.createElement('button');
-    addTaskBtn.innerText = 'Add';
-    addTaskBtn.className = 'add-item-btn';
-    footer.appendChild(addTaskBtn);
+    inputTodo.addEventListener('keypress', function(e) {
+        if (e.keyCode === 13) {
+            addNewTask(boardBody, dashboars[0].todos[0])
+        }
+    });
 
     renderAllTasks(boardBody, dashboars[0].todos);
-
-    if(addTaskBtn) {
-        addTaskBtn.addEventListener('click', function (e) {
-            addNewTask(boardBody, dashboars[0].todos[0])
-        });
-    }
 
     return boardContainer;
 };
@@ -98,9 +96,11 @@ let createTask = function (task) {
     boardItem.appendChild(itemCheckbox);
     boardItem.appendChild(titleItem);
 
-    let delBtn = document.createElement('button');
+    let delBtn = document.createElement('input');
+    delBtn.setAttribute("type", "image");
+    delBtn.src = "./images/remove.svg";
+    delBtn.className = 'remove-image';
 
-    delBtn.innerText = 'Delete Task';
     delBtn.addEventListener('click', function (e) {
         boardItem.remove();
         deleteTaskData(task.id)
@@ -110,6 +110,9 @@ let createTask = function (task) {
     return boardItem;
 
 };
+
+let mainContainer = document.getElementById('main-container')
+mainContainer.appendChild(container);
 
 
 let renderAllBoards = function (container, boards) {
@@ -127,14 +130,19 @@ let addNewBoard = function(container, board) {
     addDashboard(board);
 };
 
-let container = document.getElementById('container');
-let addBtn = document.getElementById('add');
+let addIcon = document.createElement('input');
+addIcon.setAttribute("type", "image");
+addIcon.src = "./images/Add.svg";
+addIcon.className = 'add-image';
+addIcon.addEventListener('click', function (e) {
+    if(dashboars.length === 0){
+        alert('emty data');
+    }
+    addNewBoard(container, dashboars[0])
+});
+
+container.appendChild(addIcon);
 
 renderAllBoards(container, dashboars);
 
-if(addBtn) {
-    addBtn.addEventListener('click', function (e) {
-        addNewBoard(container, dashboars[0])
-    });
-}
 

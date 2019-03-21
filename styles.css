@@ -43,6 +43,8 @@ header {
 }
 
 .card-item {
+	height: 320px;
+	width: 580px;
 	margin-top: 16px;
 	border-radius: 6px;
 	background-color: #ffffff;
@@ -71,7 +73,7 @@ header {
 	line-height: 29px;
 	font-family: 'Roboto', sans-serif;
 }
-.card-header-title-input{
+.card-header-title-input {
 	height: 29px;
 	width: 500px;
 	font-family: 'Roboto', sans-serif;
@@ -80,10 +82,14 @@ header {
 	font-weight: bold;
 	border: none;
 	color: black;
-	opacity: 0.9;
-	background-color: white;}
+}
+.card-header-title-input:focus {
+	border: none;
+	outline: none;
+	border-bottom: 3px solid #333333;
+}
 
-.card-header-icon img {
+.card-header-icon-img {
 	padding: 15px;
 	height: 18px;
 	width: 14px;
@@ -91,7 +97,7 @@ header {
 .card-body{
 	display: flex;
 	flex-direction: column;
-	height: 300px;
+	height: 200px;
 	width: 580px;
 	background-color: #FFFFFF;
 }
@@ -109,9 +115,13 @@ header {
 	border: 2px solid #7F7F7F;
 	border-radius: 6px;
 }
+.card-body-checkbox:checked+div.card-body-title {
+	text-decoration: line-through;
+
+}
 .card-body-title{
 	height: 29px;
-	width: 421px;
+	width: 495px;
 	opacity: 0.5;
 	color: #000000;
 	font-size: 20px;
@@ -120,23 +130,24 @@ header {
 	font-family: 'Roboto', sans-serif;
 }
 .class-footer {
-	margin: 8px;
 	height: 40px;
-	width: 500px;
+	width: 580px;
 	background-color: #FFFFFF;
 }
 .input-todos {
-	margin: 8px;
+	height: 29px;
 	width: 500px;
-	opacity: 0.9;
-	color: #000000;
-	font-family: 'Roboto', sans-serif;
+	margin-left: 25px;
+	margin-top: 4px;
+	opacity: 0.5;
 	font-size: 20px;
 	line-height: 29px;
+	color: #000000;
+	font-family: 'Roboto', sans-serif;
 	border: none;
 	background-color: inherit;
 }
-.add {
+.add-image {
     width: 60px;
     height: 60px;
     position: fixed;
@@ -146,5 +157,9 @@ header {
 .input-line {
 	width: 50px;
 	background-color: #7F7F7F;
+}
+.remove-image {
+	height: 15px;
+	width: 40px;
 }
 
