@@ -42,17 +42,75 @@ let createBoard = function (board) {
     boardHeader.appendChild(boardHeaderTitle);
     boardHeader.appendChild(headerIconDiv);
 
-    footer.appendChild(inputTodo);
-
-    boardBody.appendChild(footer);
 
     boardContainer.appendChild(boardHeader);
     boardContainer.appendChild(boardBody);
     footer.appendChild(inputTodo);
     footer.appendChild(delBtn);
     boardContainer.appendChild(footer);
+
+    let renderAllTasks = function (boardBody, tasks) {
+        tasks.map(createTask).forEach(function (tsk) {
+            boardBody.appendChild(tsk)
+        })
+    };
+
+    let renderTask = function(boardBody, task) {
+        boardBody.appendChild(createTask(task))
+    };
+
+    let addNewTask = function(boardBody, task) {
+        renderTask(boardBody, task);
+        addTask(task);
+    };
+
+    let addTaskBtn = document.createElement('button');
+    addTaskBtn.innerText = 'Add';
+    addTaskBtn.className = 'add-item-btn';
+    footer.appendChild(addTaskBtn);
+
+    renderAllTasks(boardBody, dashboars[0].todos);
+
+    if(addTaskBtn) {
+        addTaskBtn.addEventListener('click', function (e) {
+            addNewTask(boardBody, dashboars[0].todos[0])
+        });
+    }
+
     return boardContainer;
 };
+
+//create task
+
+let createTask = function (task) {
+
+    let boardItem = document.createElement('div');
+    boardItem.className = 'card-body-item';
+
+    let itemCheckbox = document.createElement("INPUT");
+    itemCheckbox.setAttribute("type", "checkbox");
+    itemCheckbox.className = 'card-body-checkbox';
+
+    let titleItem = document.createElement('div');
+    titleItem.className = 'card-body-title';
+    titleItem.innerText = dashboars[0].todos[0].title;
+
+    boardItem.appendChild(itemCheckbox);
+    boardItem.appendChild(titleItem);
+
+    let delBtn = document.createElement('button');
+
+    delBtn.innerText = 'Delete Task';
+    delBtn.addEventListener('click', function (e) {
+        boardItem.remove();
+        deleteTaskData(task.id)
+    });
+    boardItem.appendChild(delBtn);
+
+    return boardItem;
+
+};
+
 
 let renderAllBoards = function (container, boards) {
     boards.map(createBoard).forEach(function (brd) {
@@ -69,12 +127,6 @@ let addNewBoard = function(container, board) {
     addDashboard(board);
 };
 
-let deleteAllBoards = function(container) {
-    while(container.firstChild) {
-        container.firstChild.remove()
-    }
-};
-
 let container = document.getElementById('container');
 let addBtn = document.getElementById('add');
 
@@ -85,3 +137,4 @@ if(addBtn) {
         addNewBoard(container, dashboars[0])
     });
 }
+

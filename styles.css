@@ -120,13 +120,13 @@ header {
 	font-family: 'Roboto', sans-serif;
 }
 .class-footer {
+	margin: 8px;
 	height: 40px;
 	width: 500px;
 	background-color: #FFFFFF;
 }
 .input-todos {
 	margin: 8px;
-	height: 29px;
 	width: 500px;
 	opacity: 0.9;
 	color: #000000;
@@ -144,9 +144,7 @@ header {
     bottom: 10px;
 }
 .input-line {
-	height: 2px;
-	width: 500px;
+	width: 50px;
 	background-color: #7F7F7F;
 }
-
 
