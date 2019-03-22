@@ -141,5 +141,11 @@ addIcon.addEventListener('click', function (e) {
 
 container.appendChild(addIcon);
 
-renderAllBoards(container, dashboars);
-
+/// promise example
+function delay(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms);
+    });
+}
+delay(1000)
+    .then(() => renderAllBoards(container, dashboars));
