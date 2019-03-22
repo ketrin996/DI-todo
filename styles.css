@@ -15,11 +15,11 @@ body, html {
 header {
 	display: flex;
 	align-items: center;
+	flex-direction: row;
 	max-height: 36px;
 	padding-top: 38px;
 	margin: auto;
-	align-content: center;
-	max-width: 75%;
+	max-width: 70%;
 }
 
 .header-separator img{

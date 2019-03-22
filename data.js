@@ -1,7 +1,7 @@
 let dashboars = [
     {
             id: '1001',
-            title: 'DI Test to do 1',
+            title: 'GV 2020 OD 1',
             todos: [
                 {
                     id:'100101',
@@ -23,7 +23,7 @@ let dashboars = [
 
     {
             id: '1002',
-            title: 'DI Test to do 2',
+            title: 'GV 2020 OD 2',
             todos: [
                 {
                     id: '100201',
