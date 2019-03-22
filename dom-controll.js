@@ -14,7 +14,7 @@ let createBoard = function (board) {
 
     let inputTitle = document.createElement("INPUT");
     inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute('placeholder', dashboars[0].title);
+    inputTitle.setAttribute('placeholder', board.title);
     inputTitle.className ='card-header-title-input';
 
     let headerIconDiv = document.createElement('div');
@@ -26,7 +26,7 @@ let createBoard = function (board) {
     headerIcon.className = 'card-header-icon-img';
     headerIcon.addEventListener('click', function (e) {
         boardContainer.remove();
-        deleteDashboardData(board.id)
+        /*deleteDashboardData(board.id)*/
     });
 
     let boardBody = document.createElement('div');
@@ -69,11 +69,11 @@ let createBoard = function (board) {
 
     inputTodo.addEventListener('keypress', function(e) {
         if (e.keyCode === 13) {
-            addNewTask(boardBody, dashboars[0].todos[0])
+            addNewTask(boardBody, board.todos[0] )
         }
     });
 
-    renderAllTasks(boardBody, dashboars[0].todos);
+    renderAllTasks(boardBody, board.todos);
 
     return boardContainer;
 };
@@ -85,13 +85,14 @@ let createTask = function (task) {
     let boardItem = document.createElement('div');
     boardItem.className = 'card-body-item';
 
+
     let itemCheckbox = document.createElement("INPUT");
     itemCheckbox.setAttribute("type", "checkbox");
     itemCheckbox.className = 'card-body-checkbox';
 
     let titleItem = document.createElement('div');
     titleItem.className = 'card-body-title';
-    titleItem.innerText = dashboars[0].todos[0].title;
+    titleItem.innerText = task.title;
 
     boardItem.appendChild(itemCheckbox);
     boardItem.appendChild(titleItem);
@@ -135,14 +136,10 @@ addIcon.setAttribute("type", "image");
 addIcon.src = "./images/Add.svg";
 addIcon.className = 'add-image';
 addIcon.addEventListener('click', function (e) {
-    if(dashboars.length === 0){
-        alert('emty data');
-    }
-    addNewBoard(container, dashboars[0])
+    addNewBoard(container, newDashb)
 });
 
 container.appendChild(addIcon);
 
 renderAllBoards(container, dashboars);
-
 
